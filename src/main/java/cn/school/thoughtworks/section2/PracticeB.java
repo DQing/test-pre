@@ -10,14 +10,19 @@ public class PracticeB {
         Map<String, Integer> expectedResult = new HashMap<String, Integer>();
         Map<String, Integer> temp = new HashMap<String, Integer>();
         for (int i = 0; i < collection1.size(); i++) {
-            if(length(collection1.get(i)) == 1)
-            if(i==0) {
-                int count = Collections.frequency(collection1, collection1.get(i));
-                expectedResult.put(collection1.get(i),count);
+            if(collection1.get(i).length() == 1) {
+                if (i == 0) {
+                    int count = Collections.frequency(collection1, collection1.get(i));
+                    expectedResult.put(collection1.get(i), count);
+                } else if (collection1.get(i).equals(collection1.get(i - 1))) {
+                    int count = Collections.frequency(collection1, collection1.get(i));
+                    expectedResult.put(collection1.get(i), count);
+                }
             }
-            else if(collection1.get(i).equals(collection1.get(i-1))) {
-                int count = Collections.frequency(collection1, collection1.get(i));
-                expectedResult.put(collection1.get(i),count);
+            else {
+                int count = Integer.valueOf(String.valueOf(collection1.get(i).charAt(2)));
+                String str = String.valueOf(collection1.get(i).charAt(0));
+                expectedResult.put(str,count);
             }
         }
         return expectedResult;
